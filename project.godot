@@ -12,7 +12,13 @@ config_version=5
 
 config/name="after-thought"
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://dagger.png"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=800
+window/stretch/mode="canvas_items"
 
 [editor]
 
