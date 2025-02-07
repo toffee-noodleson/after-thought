@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="after-thought"
+run/main_scene="res://scenes/level_base/level_base.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://dagger.png"
 
@@ -18,12 +19,21 @@ config/icon="res://dagger.png"
 
 window/size/viewport_width=1280
 window/size/viewport_height=800
-window/stretch/mode="canvas_items"
 
 [editor]
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[layer_names]
+
+2d_physics/layer_1="platform"
+2d_physics/layer_2="player_hurtbox"
+2d_physics/layer_3="player_hitbox"
+2d_physics/layer_4="enemy_hurtbox"
+2d_physics/layer_5="enemy_hitbox"
+2d_physics/layer_6="obstacle"
+2d_physics/layer_7="hazard"
 
 [rendering]
 
