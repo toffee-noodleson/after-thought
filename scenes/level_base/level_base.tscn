@@ -585,4 +585,4 @@ tile_map_data = PackedByteArray("AAAAAPz/AQAIAAAAAAAAAP3/AQAIAAEAAAAAAP7/AQAIAAI
 tile_set = SubResource("TileSet_cvder")
 
 [node name="Player" parent="." instance=ExtResource("2_w7ih7")]
-position = Vector2(56, -234)
+position = Vector2(109, -185)

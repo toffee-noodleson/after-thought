@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnwscw0be18y6"]
+
+[ext_resource type="Script" path="res://scenes/projectile_generator/projectile_generator.gd" id="1_nwftl"]
+
+[node name="ProjectileGenerator" type="Node2D"]
+script = ExtResource("1_nwftl")

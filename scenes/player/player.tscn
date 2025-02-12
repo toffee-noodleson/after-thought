@@ -508,6 +508,7 @@ script = ExtResource("1_2bqam")
 metadata/_edit_horizontal_guides_ = [25.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("1_pd4vx")
 hframes = 4
 

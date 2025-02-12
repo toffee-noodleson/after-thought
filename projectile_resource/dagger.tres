@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ProjectileRes" load_steps=2 format=3 uid="uid://cypvg10vrc53t"]
+
+[ext_resource type="Script" path="res://projectile_resource/projectile.gd" id="1_70dfa"]
+
+[resource]
+script = ExtResource("1_70dfa")
+speed = 1.0
+damage = 1.0
+frequency = 1.0
+lifetime = 5.0
+movement_type = ""

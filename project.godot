@@ -70,6 +70,7 @@ attack={
 2d_physics/layer_5="enemy_hitbox"
 2d_physics/layer_6="obstacle"
 2d_physics/layer_7="hazard"
+2d_physics/layer_8="player_projectile_hitbox"
 
 [rendering]
 
