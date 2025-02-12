@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://03qkyga01xlt"]
+[gd_scene load_steps=24 format=3 uid="uid://03qkyga01xlt"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_2bqam"]
 [ext_resource type="Texture2D" uid="uid://4v1dsh2nqsab" path="res://assets/Hero/Idle/Idle-Sheet.png" id="1_pd4vx"]
@@ -11,10 +11,9 @@
 [ext_resource type="Script" path="res://scenes/player/run.gd" id="6_bwm4w"]
 [ext_resource type="Script" path="res://scenes/player/fall.gd" id="6_hd2vl"]
 [ext_resource type="PackedScene" uid="uid://dcv8ry6c4ovl6" path="res://scenes/camera_2d/camera_2d.tscn" id="10_5yjvt"]
-[ext_resource type="Script" path="res://scenes/player/attack_1.gd" id="11_itg4a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uti2b"]
-radius = 6.00001
+radius = 8.0
 height = 54.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mspd5"]
@@ -88,83 +87,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_e85a0"]
 resource_name = "attack_1"
-length = 0.5
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_j86n7")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [4, 5, 6, 7]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D/HitboxAttack1:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2D:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_cv3rv"]
-resource_name = "attack_2"
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -212,12 +134,12 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [4, 5, 6, 7]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D/HitboxAttack2:visible")
+tracks/4/path = NodePath("Sprite2D/HitboxAttack1:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -289,7 +211,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0, 3)]
 }
 
 [sub_resource type="Animation" id="Animation_ihjse"]
@@ -360,7 +282,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_crrnl"]
 resource_name = "jump"
 length = 0.6
-step = 0.01
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -404,7 +326,7 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
@@ -416,10 +338,10 @@ tracks/4/path = NodePath("Sprite2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.12),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -7), Vector2(0, -7), Vector2(0, 0)]
+"values": [Vector2(0, -7)]
 }
 
 [sub_resource type="Animation" id="Animation_84mjf"]
@@ -488,6 +410,70 @@ tracks/4/keys = {
 "values": [Vector2(-2, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_cv3rv"]
+resource_name = "attack_2"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_j86n7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/HitboxAttack2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l2iqo"]
 _data = {
 "RESET": SubResource("Animation_vo7h6"),
@@ -517,12 +503,12 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitboxAttack1"]
-position = Vector2(26, -2)
+position = Vector2(22, -2)
 shape = SubResource("CapsuleShape2D_uti2b")
 debug_color = Color(0.909859, 0.209985, 0.534268, 0.42)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/HitboxAttack1"]
-position = Vector2(-3, 30)
+position = Vector2(-5, 31)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_uti2b")
 debug_color = Color(0.909804, 0.211765, 0.533333, 0.419608)
@@ -566,8 +552,9 @@ script = ExtResource("6_05p8t")
 [node name="Fall" type="Node2D" parent="StateMachineMove"]
 script = ExtResource("6_hd2vl")
 
-[node name="Attack_1" type="Node2D" parent="StateMachineMove"]
-script = ExtResource("11_itg4a")
+[node name="StateMachineAttack" type="Node2D" parent="."]
+
+[node name="Attack1" type="Node2D" parent="StateMachineAttack"]
 
 [node name="DebugLabel" type="Label" parent="."]
 offset_left = -30.0
@@ -579,9 +566,3 @@ text = "asdf"
 label_settings = SubResource("LabelSettings_r6d2l")
 
 [node name="Camera2D" parent="." instance=ExtResource("10_5yjvt")]
-
-[node name="DashTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
