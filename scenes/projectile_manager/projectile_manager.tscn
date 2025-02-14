@@ -4,8 +4,3 @@
 
 [node name="ProjectileManager" type="Node2D"]
 script = ExtResource("1_ejlat")
-
-[node name="DaggerTimer" type="Timer" parent="."]
-autostart = true
-
-[connection signal="timeout" from="DaggerTimer" to="." method="_on_dagger_timer_timeout"]
