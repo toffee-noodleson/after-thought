@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://brj8016lr1coa"]
+[gd_scene load_steps=6 format=4 uid="uid://brj8016lr1coa"]
 
 [ext_resource type="Texture2D" uid="uid://b6h7jy8qy1k0s" path="res://assets/Tiles/Tiles-debug.png" id="1_5wlrt"]
 [ext_resource type="PackedScene" uid="uid://03qkyga01xlt" path="res://scenes/player/player.tscn" id="2_w7ih7"]
+[ext_resource type="PackedScene" uid="uid://cnwscw0be18y6" path="res://scenes/projectile_manager/projectile_manager.tscn" id="3_5cpge"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xy0g6"]
 texture = ExtResource("1_5wlrt")
@@ -586,3 +587,5 @@ tile_set = SubResource("TileSet_cvder")
 
 [node name="Player" parent="." instance=ExtResource("2_w7ih7")]
 position = Vector2(109, -185)
+
+[node name="ProjectileManager" parent="." instance=ExtResource("3_5cpge")]

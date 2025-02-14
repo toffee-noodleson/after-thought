@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://03qkyga01xlt"]
+[gd_scene load_steps=25 format=3 uid="uid://03qkyga01xlt"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_2bqam"]
 [ext_resource type="Texture2D" uid="uid://4v1dsh2nqsab" path="res://assets/Hero/Idle/Idle-Sheet.png" id="1_pd4vx"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://scenes/player/fall.gd" id="6_hd2vl"]
 [ext_resource type="PackedScene" uid="uid://dcv8ry6c4ovl6" path="res://scenes/camera_2d/camera_2d.tscn" id="10_5yjvt"]
 [ext_resource type="Script" path="res://scenes/player/attack_1.gd" id="11_itg4a"]
-[ext_resource type="PackedScene" uid="uid://cnwscw0be18y6" path="res://scenes/projectile_manager/projectile_manager.tscn" id="13_sehow"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uti2b"]
 radius = 6.00001
@@ -585,7 +584,5 @@ label_settings = SubResource("LabelSettings_r6d2l")
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
-
-[node name="ProjectileManager" parent="." instance=ExtResource("13_sehow")]
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

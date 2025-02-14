@@ -1,23 +1,37 @@
 extends Node2D
 
 @onready var player: CharacterBody2D = $"../Player"
+@onready var cooldown_timer: Timer = $CooldownTimer
+
+var _dagger: ProjectileDagger
+var _face_right: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	SignalManager.player_face_right.connect(face_right)
+	spawn_dagger()
+	cooldown_timer.start(_dagger.projectile.cooldown)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug_spawn_projectile"):
-		spawn_dagger()
+	pass
 
-#func get_parent_pos() -> Vector2:
-	#return get_parent().global_position
+func get_parent_pos() -> Vector2:
+	return get_parent().global_position
 
-
-func reset(dagger: ProjectileDagger, pos: Vector2) -> void:
-	dagger.global_position = pos
 
 func spawn_dagger() -> void:
-	var dagger: ProjectileDagger = preload("res://scenes/projectiles/dagger.tscn").instantiate()
-	call_deferred("add_child")
+	_dagger = preload("res://scenes/projectiles/dagger.tscn").instantiate()
+	_dagger.setup(player.global_position, _face_right)
+	call_deferred("add_child", _dagger)
+
+func face_right(right: bool) -> void:
+	if right:
+		_face_right = true
+	else:
+		_face_right = false
+	
+
+
+func _on_cooldown_timer_timeout() -> void:
+	spawn_dagger()

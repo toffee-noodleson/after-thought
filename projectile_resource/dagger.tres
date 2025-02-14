@@ -8,4 +8,5 @@ speed = 375.0
 damage = 1.0
 frequency = 1.0
 lifetime = 3.5
+cooldown = 3.5
 movement_type = ""

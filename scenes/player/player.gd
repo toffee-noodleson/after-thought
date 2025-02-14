@@ -51,9 +51,11 @@ func get_input() -> void:
 		velocity.y = JUMP_VELOCITY
 
 	if Input.is_action_pressed("right"):
+		SignalManager.player_face_right.emit(true)
 		velocity.x = SPEED
 		sprite_2d.flip_h = false
 	elif Input.is_action_pressed("left"):
+		SignalManager.player_face_right.emit(false)
 		velocity.x = -SPEED
 		sprite_2d.flip_h = true
 	#else:
