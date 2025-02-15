@@ -42,6 +42,7 @@ func setup(pos: Vector2, face_right: bool) -> void:
 	
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	print("projectile hit")
 	SignalManager.on_projectile_enemy_hit.emit()
 
 

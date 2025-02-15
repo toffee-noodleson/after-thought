@@ -5,7 +5,6 @@ extends CharacterBody2D
 @onready var debug_label: Label = $DebugLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var hurtbox: CollisionShape2D = $Hurtbox
 @onready var dash_timer: Timer = $DashTimer
 @onready var hitbox_attack_1: Area2D = $Sprite2D/HitboxAttack1
 @onready var hitbox_attack_2: Area2D = $Sprite2D/HitboxAttack2
@@ -104,3 +103,8 @@ func flip_h_hitbox(hitbox: Area2D) -> void:
 func _on_dash_timer_timeout() -> void:
 	sms.set_state(sms.MOVE_STATE.IDLE)
 	_pause_input = false
+
+
+func _on_hitbox_attack_1_area_entered(area: Area2D) -> void:
+	print("attack_1 hit")
+	SignalManager.on_attack_1_enemy_hit.emit()

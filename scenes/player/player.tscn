@@ -85,6 +85,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D/HitboxAttack1:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_e85a0"]
 resource_name = "attack_1"
@@ -161,6 +173,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D/HitboxAttack1:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_cv3rv"]
@@ -515,7 +539,8 @@ hframes = 4
 [node name="HitboxAttack1" type="Area2D" parent="Sprite2D"]
 visible = false
 collision_layer = 4
-collision_mask = 0
+collision_mask = 8
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitboxAttack1"]
 position = Vector2(26, -2)
@@ -530,6 +555,8 @@ debug_color = Color(0.909804, 0.211765, 0.533333, 0.419608)
 
 [node name="HitboxAttack2" type="Area2D" parent="Sprite2D"]
 visible = false
+collision_layer = 4
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitboxAttack2"]
 position = Vector2(30, -17)
@@ -542,7 +569,8 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_mspd5")
 debug_color = Color(0.893992, 0.0993632, 0.74008, 0.42)
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="PhysicsBox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_07ty7")
 
@@ -585,4 +613,13 @@ label_settings = SubResource("LabelSettings_r6d2l")
 wait_time = 0.5
 one_shot = true
 
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="PhysicsBox2" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_07ty7")
+
+[connection signal="area_entered" from="Sprite2D/HitboxAttack1" to="." method="_on_hitbox_attack_1_area_entered"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
