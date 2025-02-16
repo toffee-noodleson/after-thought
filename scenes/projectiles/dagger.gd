@@ -8,11 +8,13 @@ extends Sprite2D
 
 var _starting_global: Vector2
 var _face_right: bool = true
+var _damage: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	global_position = _starting_global
 	lifespan_timer.start(projectile.cooldown)
+	_damage = projectile.damage
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,12 +41,13 @@ func setup(pos: Vector2, face_right: bool) -> void:
 		flip_h = true
 	else:
 		flip_h = false
-	
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("projectile hit")
-	SignalManager.on_projectile_enemy_hit.emit()
-
+func exit_scene() -> void:
+	queue_free()
 
 func _on_lifespan_timer_timeout() -> void:
-	queue_free()
+	exit_scene()
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	SignalManager.on_projectile_enemy_hit.emit(global_position)
+	exit_scene()

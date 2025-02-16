@@ -18,6 +18,7 @@ config/icon="res://dagger.png"
 [autoload]
 
 SignalManager="*res://autoloads/signal_manager.gd"
+StatsDatabase="*res://autoloads/stats_database.gd"
 
 [display]
 
@@ -29,6 +30,11 @@ window/stretch/aspect="ignore"
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[global_group]
+
+projectile=""
+actor=""
 
 [input]
 
@@ -75,7 +81,8 @@ debug_spawn_projectile={
 2d_physics/layer_5="enemy_hitbox"
 2d_physics/layer_6="obstacle"
 2d_physics/layer_7="hazard"
-2d_physics/layer_8="player_projectile_hitbox"
+2d_physics/layer_8="core_projectile_hitbox"
+2d_physics/layer_9="core_hurtbox"
 
 [rendering]
 

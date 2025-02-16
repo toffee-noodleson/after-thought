@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://btqypd1idfsi5"]
+
+[ext_resource type="Texture2D" uid="uid://pt0ujftuyu0u" path="res://assets/Enemies/Death/hit.png" id="1_63trs"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy_death.gd" id="2_xdsp0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ramrs"]
+atlas = ExtResource("1_63trs")
+region = Rect2(0, 0, 31, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i14tr"]
+atlas = ExtResource("1_63trs")
+region = Rect2(31, 0, 31, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nedrc"]
+atlas = ExtResource("1_63trs")
+region = Rect2(62, 0, 31, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pxy57"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ramrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i14tr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nedrc")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="EnemyDeath" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_pxy57")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+script = ExtResource("2_xdsp0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

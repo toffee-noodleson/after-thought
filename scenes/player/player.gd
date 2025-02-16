@@ -23,6 +23,8 @@ var _can_dash: bool = true
 var _pause_gravity: bool = false
 var _pause_input: bool = false
 
+var _damage: float = 3
+
 func _physics_process(delta: float) -> void:
 	
 	# Apply gravity
@@ -107,4 +109,5 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_hitbox_attack_1_area_entered(area: Area2D) -> void:
 	print("attack_1 hit")
+	_damage = 3
 	SignalManager.on_attack_1_enemy_hit.emit()
