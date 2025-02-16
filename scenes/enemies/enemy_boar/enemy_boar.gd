@@ -5,6 +5,7 @@ extends EnemyBase
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var debug_label: Label = $DebugLabel
 @onready var sword_invincible_timer: Timer = $SwordInvincibleTimer
+@onready var hit_stun_timer: Timer = $HitStunTimer
 
 
 enum ENEMY_STATE {IDLE, WALK, ATTACK, HURT, DEATH}
@@ -16,6 +17,8 @@ var _attack_speed: float = -50
 var _flipped: bool = false
 var _current_hp: float
 var _sword_invincibile: bool = false
+var _invincible: bool = false
+var _hit_stun: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,12 +41,21 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func move() -> void:
+	
+	if _hit_stun:
+		velocity.x = 0
+		return
+	
 	velocity.x = _move_speed
 
 func attack() -> void:
 	velocity.x = _attack_speed
 
 func calculate_state() -> void:
+	
+	if _hit_stun:
+		set_state(ENEMY_STATE.HURT)
+		return 
 	
 	if velocity.x != 0 and _current_state != ENEMY_STATE.ATTACK:
 		set_state(ENEMY_STATE.WALK)
@@ -63,6 +75,9 @@ func set_state(state: ENEMY_STATE) -> void:
 			animated_sprite_2d.play("idle")
 		ENEMY_STATE.WALK:
 			animated_sprite_2d.play("walk")
+		ENEMY_STATE.HURT:
+			animated_sprite_2d.play("hit")
+			hit_stun_timer.start()
 
 
 func detect_player() -> void:
@@ -94,6 +109,12 @@ func update_label() -> void:
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
+	
+	if _invincible:
+		return
+	
+	_hit_stun = true
+	
 	# Need to refactor daggers into a base class to match projectile group. For now just
 	# cheat and match exact type
 	if "projectile" in area.get_parent().get_groups():
@@ -112,3 +133,9 @@ func check_death() -> void:
 	if _current_hp <= 0:
 		SignalManager.on_enemy_death.emit(global_position)
 		queue_free()
+
+
+func _on_hit_stun_timer_timeout() -> void:
+	_hit_stun = false
+	set_state(ENEMY_STATE.IDLE)
+	
