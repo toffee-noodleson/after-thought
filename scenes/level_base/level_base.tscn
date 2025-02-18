@@ -614,7 +614,21 @@ position = Vector2(521, -175)
 position = Vector2(970, -170)
 enemy_type = ExtResource("4_7filj")
 
+[node name="EnemySpawner5" parent="." instance=ExtResource("7_s4fmd")]
+position = Vector2(1132, -123)
+enemy_type = ExtResource("4_7filj")
+
 [node name="EnemySpawner2" parent="." instance=ExtResource("7_s4fmd")]
 position = Vector2(287, -184)
+enemy_type = ExtResource("4_7filj")
+face_right = true
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("7_s4fmd")]
+position = Vector2(138, -187)
+enemy_type = ExtResource("4_7filj")
+face_right = true
+
+[node name="EnemySpawner4" parent="." instance=ExtResource("7_s4fmd")]
+position = Vector2(97, -180)
 enemy_type = ExtResource("4_7filj")
 face_right = true

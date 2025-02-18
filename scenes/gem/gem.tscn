@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://xfsee2uei220"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_menvo"]
+
+[node name="Gem" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_menvo")
