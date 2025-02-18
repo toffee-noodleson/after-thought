@@ -203,28 +203,36 @@ collision_mask = 132
 position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_sndvl")
 
-[node name="PlayerDetect" type="RayCast2D" parent="." index="3"]
+[node name="Hitbox" type="Area2D" parent="." index="3"]
+collision_layer = 16
+collision_mask = 256
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_sndvl")
+
+[node name="PlayerDetect" type="RayCast2D" parent="." index="4"]
 rotation = 1.5708
 target_position = Vector2(0, 120)
 collision_mask = 2
 
-[node name="WallDetect" type="RayCast2D" parent="." index="4"]
+[node name="WallDetect" type="RayCast2D" parent="." index="5"]
 rotation = 1.5708
 target_position = Vector2(0, 30)
 
-[node name="ChargeTimer" type="Timer" parent="." index="5"]
+[node name="ChargeTimer" type="Timer" parent="." index="6"]
 wait_time = 2.0
 one_shot = true
 
-[node name="SwordInvincibleTimer" type="Timer" parent="." index="6"]
+[node name="SwordInvincibleTimer" type="Timer" parent="." index="7"]
 wait_time = 0.5
 one_shot = true
 
-[node name="HitStunTimer" type="Timer" parent="." index="7"]
+[node name="HitStunTimer" type="Timer" parent="." index="8"]
 wait_time = 0.5
 one_shot = true
 
-[node name="DebugLabel" type="Label" parent="." index="8"]
+[node name="DebugLabel" type="Label" parent="." index="9"]
 offset_left = -6.0
 offset_top = -20.0
 offset_right = 34.0
@@ -233,5 +241,6 @@ scale = Vector2(0.310764, 0.343225)
 text = "asdf"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="SwordInvincibleTimer" to="." method="_on_sword_invincible_timer_timeout"]
 [connection signal="timeout" from="HitStunTimer" to="." method="_on_hit_stun_timer_timeout"]

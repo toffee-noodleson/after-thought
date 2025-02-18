@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://03qkyga01xlt"]
+[gd_scene load_steps=28 format=3 uid="uid://03qkyga01xlt"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_2bqam"]
 [ext_resource type="Texture2D" uid="uid://4v1dsh2nqsab" path="res://assets/Hero/Idle/Idle-Sheet.png" id="1_pd4vx"]
@@ -10,11 +10,13 @@
 [ext_resource type="Script" path="res://scenes/player/idle.gd" id="6_7rgyr"]
 [ext_resource type="Script" path="res://scenes/player/run.gd" id="6_bwm4w"]
 [ext_resource type="Script" path="res://scenes/player/fall.gd" id="6_hd2vl"]
+[ext_resource type="Texture2D" uid="uid://bnwyuncx00od5" path="res://assets/Hero/Dead/Dead-Sheet.png" id="6_rxwxx"]
 [ext_resource type="PackedScene" uid="uid://dcv8ry6c4ovl6" path="res://scenes/camera_2d/camera_2d.tscn" id="10_5yjvt"]
 [ext_resource type="Script" path="res://scenes/player/attack_1.gd" id="11_itg4a"]
+[ext_resource type="Script" path="res://scenes/player/hurt.gd" id="13_x18yi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uti2b"]
-radius = 6.00001
+radius = 11.0
 height = 54.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mspd5"]
@@ -108,6 +110,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite2D:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_e85a0"]
@@ -536,12 +550,91 @@ tracks/4/keys = {
 "values": [Vector2(-2, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_3tyte"]
+resource_name = "hurt"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.663069, 0.0216917, 0.551962, 0.482353), Color(1, 1, 1, 1), Color(0.663069, 0.0216917, 0.551962, 0.482353), Color(1, 1, 1, 1), Color(0.663069, 0.0216917, 0.551962, 0.482353), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_rxwxx")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("Sprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11, 7)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("Sprite2D:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l2iqo"]
 _data = {
 "RESET": SubResource("Animation_vo7h6"),
 "attack_1": SubResource("Animation_e85a0"),
 "attack_2": SubResource("Animation_cv3rv"),
 "fall": SubResource("Animation_sb447"),
+"hurt": SubResource("Animation_3tyte"),
 "idle": SubResource("Animation_ihjse"),
 "jump": SubResource("Animation_crrnl"),
 "run": SubResource("Animation_84mjf")
@@ -623,6 +716,9 @@ script = ExtResource("6_hd2vl")
 [node name="Attack_1" type="Node2D" parent="StateMachineMove"]
 script = ExtResource("11_itg4a")
 
+[node name="Hurt" type="Node2D" parent="StateMachineMove"]
+script = ExtResource("13_x18yi")
+
 [node name="DebugLabel" type="Label" parent="."]
 offset_left = -30.0
 offset_top = -54.0
@@ -638,9 +734,12 @@ label_settings = SubResource("LabelSettings_r6d2l")
 wait_time = 0.5
 one_shot = true
 
+[node name="InvincibilityTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 16
 
 [node name="PhysicsBox2" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, 2)
@@ -648,3 +747,5 @@ shape = SubResource("RectangleShape2D_07ty7")
 
 [connection signal="area_entered" from="Sprite2D/HitboxAttack1" to="." method="_on_hitbox_attack_1_area_entered"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

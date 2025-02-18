@@ -23,10 +23,12 @@ var _hit_stun: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_current_hp = _hit_points
+	if _flipped:
+		flip_actor()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	call_deferred("detect_player")
+	#call_deferred("detect_player")
 	calculate_state()
 	update_label()
 	
@@ -113,14 +115,14 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if _invincible:
 		return
 	
-	_hit_stun = true
 	
 	# Need to refactor daggers into a base class to match projectile group. For now just
 	# cheat and match exact type
 	if "projectile" in area.get_parent().get_groups():
+		_hit_stun = true
 		take_damage(area.get_parent()._damage)
-	
-	if area.get_parent().get_parent().name == "Player":
+
+	if area.name == "HitboxAttack1":
 		if not _sword_invincibile:
 			take_damage(area.get_parent().get_parent()._damage)
 			_sword_invincibile = true
@@ -139,3 +141,10 @@ func _on_hit_stun_timer_timeout() -> void:
 	_hit_stun = false
 	set_state(ENEMY_STATE.IDLE)
 	
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.get_parent().name == "Core":
+		print("core hit by enemy")
+		StatsDatabase.current_hp -= 1
+		SignalManager.on_core_hit.emit()
+		queue_free()

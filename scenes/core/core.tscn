@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqt67sw82ydsk"]
+[gd_scene load_steps=4 format=3 uid="uid://cqt67sw82ydsk"]
 
 [ext_resource type="Texture2D" uid="uid://b6h7jy8qy1k0s" path="res://assets/Tiles/Tiles-debug.png" id="1_1f06h"]
+[ext_resource type="Script" path="res://scenes/core/core.gd" id="2_nuhgu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eeydj"]
 radius = 25.0
@@ -9,8 +10,11 @@ radius = 25.0
 texture = ExtResource("1_1f06h")
 region_enabled = true
 region_rect = Rect2(255.783, 31.8672, 48.1556, 47.9099)
+script = ExtResource("2_nuhgu")
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_eeydj")

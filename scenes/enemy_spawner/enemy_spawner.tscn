@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://6v6sjbx5nuoi"]
+
+[ext_resource type="Script" path="res://scenes/enemy_spawner/enemy_spawner.gd" id="1_32e7p"]
+[ext_resource type="Texture2D" uid="uid://b6h7jy8qy1k0s" path="res://assets/Tiles/Tiles-debug.png" id="2_g3bth"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d5d5i"]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_32e7p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_g3bth")
+region_enabled = true
+region_rect = Rect2(0.212074, 256.496, 31.2258, 31.2258)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 7.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = -7.0
+offset_top = -25.0
+offset_right = 33.0
+offset_bottom = -2.0
+scale = Vector2(0.364105, 0.351666)
+text = "asdf"
+label_settings = SubResource("LabelSettings_d5d5i")
+horizontal_alignment = 1
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

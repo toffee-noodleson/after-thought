@@ -8,6 +8,7 @@ class_name StateMachineMove
 @onready var jump: Node2D = $Jump
 @onready var fall: Node2D = $Fall
 @onready var attack_1: Node2D = $Attack_1
+@onready var hurt: Node2D = $Hurt
 
 # To add a new state, must add new enum value to MOVE_STATE and then map to new node state script in 
 # _move_state_script_mapping dictionary
@@ -17,7 +18,8 @@ enum MOVE_STATE {
 	RUN,
 	JUMP,
 	FALL,
-	ATTACK_1
+	ATTACK_1,
+	HURT
 }
 
 var _move_state_script: Dictionary = {}
@@ -28,7 +30,8 @@ func _ready() -> void:
 	MOVE_STATE.RUN: run,
 	MOVE_STATE.JUMP: jump,
 	MOVE_STATE.FALL: fall,
-	MOVE_STATE.ATTACK_1: attack_1
+	MOVE_STATE.ATTACK_1: attack_1,
+	MOVE_STATE.HURT: hurt
 	}
 
 # cast current state and set to IDLE as starting default
