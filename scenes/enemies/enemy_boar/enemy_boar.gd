@@ -87,6 +87,6 @@ func update_label() -> void:
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.get_parent().name == "Core":
 		print("core hit by enemy")
-		StatsDatabase.current_hp -= 1
+		StatsDatabase.shared_current_hp -= 1
 		SignalManager.on_core_hit.emit()
 		queue_free()

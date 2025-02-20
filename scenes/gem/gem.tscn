@@ -1,6 +1,82 @@
-[gd_scene load_steps=2 format=3 uid="uid://xfsee2uei220"]
+[gd_scene load_steps=12 format=3 uid="uid://xfsee2uei220"]
+
+[ext_resource type="Texture2D" uid="uid://bun3taxeljubl" path="res://assets/Pickup/gems-spritesheet.png" id="1_3e306"]
+[ext_resource type="Script" path="res://scenes/gem/gem.gd" id="2_nsoxm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsy7y"]
+atlas = ExtResource("1_3e306")
+region = Rect2(64, 29, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1ivu"]
+atlas = ExtResource("1_3e306")
+region = Rect2(80, 29, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu5go"]
+atlas = ExtResource("1_3e306")
+region = Rect2(96, 29, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s67c3"]
+atlas = ExtResource("1_3e306")
+region = Rect2(112, 29, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mb1s"]
+atlas = ExtResource("1_3e306")
+region = Rect2(128, 29, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r05mo"]
+atlas = ExtResource("1_3e306")
+region = Rect2(144, 29, 16, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6uph"]
+atlas = ExtResource("1_3e306")
+region = Rect2(160, 29, 16, 29)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_menvo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsy7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1ivu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu5go")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s67c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mb1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r05mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6uph")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jdjfo"]
+radius = 7.0
 
 [node name="Gem" type="AnimatedSprite2D"]
+position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_menvo")
+autoplay = "default"
+frame_progress = 0.987113
+script = ExtResource("2_nsoxm")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_jdjfo")
+debug_color = Color(0, 0.637396, 0.392619, 0.42)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

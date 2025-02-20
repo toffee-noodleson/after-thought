@@ -2,4 +2,4 @@ extends Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	StatsDatabase.current_hp = Constants.TOTAL_HP
+	StatsDatabase.shared_current_hp = Constants.TOTAL_HP

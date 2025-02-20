@@ -19,6 +19,7 @@ config/icon="res://dagger.png"
 
 SignalManager="*res://autoloads/signal_manager.gd"
 StatsDatabase="*res://autoloads/stats_db.gd"
+SoundManager="*res://autoloads/sound_manager.gd"
 
 [display]
 

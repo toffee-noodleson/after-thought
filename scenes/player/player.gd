@@ -29,6 +29,9 @@ var _invincible: bool = false
 
 var _damage: float = 3
 
+func _ready() -> void:
+	SignalManager.on_gem_pickup.connect(on_gem_pickup)
+
 func _physics_process(delta: float) -> void:
 	
 	# Apply gravity
@@ -97,9 +100,10 @@ func calculate_state() -> void:
 			sms.set_state(sms.MOVE_STATE.JUMP)
 
 func update_debug_label() -> void:
-	debug_label.text = "state: %s\nhp: %d/%d" % [
+	debug_label.text = "state: %s\nhp: %d/%d xp: %d" % [
 		sms.MOVE_STATE.keys()[sms.get_current_state()],
-		StatsDatabase.current_hp, Constants.TOTAL_HP
+		StatsDatabase.shared_current_hp, Constants.TOTAL_HP,
+		StatsDatabase.player_xp
 		]
 
 func flip_h_hitbox(hitbox: Area2D) -> void:
@@ -118,7 +122,7 @@ func take_damage() -> void:
 	set_deferred("hitbox_attack_1.monitorable", false)
 	_invincible = true
 	sms.set_state(sms.MOVE_STATE.HURT)
-	StatsDatabase.current_hp -= 1
+	StatsDatabase.shared_current_hp -= 1
 	invincibility_timer.start()
 
 func actor_reset() -> void:
@@ -142,3 +146,6 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 func _on_invincibility_timer_timeout() -> void:
 	_invincible = false
 	actor_reset()
+
+func on_gem_pickup(xp: float) -> void:
+	StatsDatabase.player_xp += xp

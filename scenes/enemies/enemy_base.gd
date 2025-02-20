@@ -14,6 +14,7 @@ var _flipped: bool = false
 var _hit_stun: bool = false
 var _invincible: bool = false
 var _sword_invincibile: bool = false
+var _dead: bool = false
 
 func _ready() -> void:
 	_current_hp = _hit_points
@@ -37,6 +38,7 @@ func take_damage(damage: float) -> void:
 
 func check_death() -> void:
 	if _current_hp <= 0:
+		_dead = true
 		SignalManager.on_enemy_death.emit(global_position)
 		queue_free()
 
@@ -46,7 +48,7 @@ func _on_hit_stun_timer_timeout() -> void:
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	
-	if _invincible:
+	if _invincible or _dead:
 		return
 	
 	
