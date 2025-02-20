@@ -182,6 +182,7 @@ collision_mask = 1
 script = ExtResource("2_f8k61")
 _hit_points = 3.0
 _damage = 1.0
+_move_speed = -25.0
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 texture_filter = 1
@@ -224,15 +225,7 @@ target_position = Vector2(0, 30)
 wait_time = 2.0
 one_shot = true
 
-[node name="SwordInvincibleTimer" type="Timer" parent="." index="7"]
-wait_time = 0.5
-one_shot = true
-
-[node name="HitStunTimer" type="Timer" parent="." index="8"]
-wait_time = 0.5
-one_shot = true
-
-[node name="DebugLabel" type="Label" parent="." index="9"]
+[node name="DebugLabel" type="Label" parent="." index="7"]
 offset_left = -6.0
 offset_top = -20.0
 offset_right = 34.0
@@ -242,5 +235,3 @@ text = "asdf"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="timeout" from="SwordInvincibleTimer" to="." method="_on_sword_invincible_timer_timeout"]
-[connection signal="timeout" from="HitStunTimer" to="." method="_on_hit_stun_timer_timeout"]
