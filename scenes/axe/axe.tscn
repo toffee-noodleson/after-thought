@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://ggt4bbyjh615"]
+
+[ext_resource type="Texture2D" uid="uid://cncbavqik5vqj" path="res://assets/Projectiles/7.png" id="1_4mr61"]
+[ext_resource type="Script" path="res://scenes/axe/axe.gd" id="2_7vqb6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q07p4"]
+radius = 14.0357
+
+[sub_resource type="Animation" id="Animation_ty1tu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_3k4e4"]
+resource_name = "rotate"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_fl8hq"]
+resource_name = "rotate_2"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -3.14159, -6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lvuw7"]
+_data = {
+"RESET": SubResource("Animation_ty1tu"),
+"rotate": SubResource("Animation_3k4e4"),
+"rotate_2": SubResource("Animation_fl8hq")
+}
+
+[node name="Axe" type="CharacterBody2D" groups=["projectile_axe"]]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_7vqb6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.549986, 0.573777)
+texture = ExtResource("1_4mr61")
+
+[node name="Area2D2" type="Area2D" parent="Sprite2D"]
+scale = Vector2(1.81795, 1.81795)
+collision_layer = 128
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D2"]
+shape = SubResource("CircleShape2D_q07p4")
+debug_color = Color(0.853822, 0.225706, 0.725812, 0.42)
+
+[node name="LifespanTimer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lvuw7")
+}
+autoplay = "rotate"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q07p4")
+debug_color = Color(0.853822, 0.225706, 0.725812, 0.42)
+
+[connection signal="area_entered" from="Sprite2D/Area2D2" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="LifespanTimer" to="." method="_on_lifespan_timer_timeout"]

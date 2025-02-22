@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ProjectileRes" load_steps=2 format=3 uid="uid://ca1ho7j87j6xg"]
+
+[ext_resource type="Script" path="res://projectile_resource/projectile_res.gd" id="1_vmsmp"]
+
+[resource]
+script = ExtResource("1_vmsmp")
+speed = 375.0
+damage = 2.0
+frequency = 1.0
+lifetime = 7.0
+cooldown = 1.5

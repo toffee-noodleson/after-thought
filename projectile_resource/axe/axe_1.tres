@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ProjectileRes" load_steps=2 format=3 uid="uid://dqxu146amaskh"]
+
+[ext_resource type="Script" path="res://projectile_resource/projectile_res.gd" id="1_hin2a"]
+
+[resource]
+script = ExtResource("1_hin2a")
+speed = 100.0
+damage = 2.0
+frequency = 1.0
+lifetime = 5.0
+cooldown = 3.5

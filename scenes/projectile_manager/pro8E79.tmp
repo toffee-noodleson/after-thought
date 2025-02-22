@@ -8,8 +8,4 @@ script = ExtResource("1_ejlat")
 [node name="CooldownTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="AxeCooldownTimer" type="Timer" parent="."]
-autostart = true
-
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
-[connection signal="timeout" from="AxeCooldownTimer" to="." method="_on_axe_cooldown_timer_timeout"]

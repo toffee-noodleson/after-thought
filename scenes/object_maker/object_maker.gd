@@ -21,6 +21,6 @@ func on_enemy_hit(global_pos: Vector2) -> void:
 func spawn_object(packed_scene: PackedScene, global_pos: Vector2) -> void:
 	var object = packed_scene.instantiate()
 	object.global_position = global_pos
-	add_child(object)
+	call_deferred("add_child", object)
 	
 	

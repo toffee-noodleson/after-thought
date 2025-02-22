@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ProjectileRes" load_steps=2 format=3 uid="uid://d3l3d0x3huv23"]
+
+[ext_resource type="Script" path="res://projectile_resource/projectile_res.gd" id="1_sapr4"]
+
+[resource]
+script = ExtResource("1_sapr4")
+speed = 100.0
+damage = 3.0
+frequency = 1.0
+lifetime = 3.5
+cooldown = 3.5

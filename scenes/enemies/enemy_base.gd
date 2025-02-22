@@ -57,6 +57,9 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if "projectile" in area.get_parent().get_groups():
 		_hit_stun = true
 		take_damage(area.get_parent()._damage)
+	if "projectile_axe" in area.get_parent().get_parent().get_groups():
+		_hit_stun = true
+		take_damage(area.get_parent().get_parent()._damage)
 
 	if area.name == "HitboxAttack1":
 		if not _sword_invincibile:

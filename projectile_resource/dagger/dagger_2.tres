@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ProjectileRes" load_steps=2 format=3 uid="uid://bulrii7jnqpyf"]
+
+[ext_resource type="Script" path="res://projectile_resource/projectile_res.gd" id="1_bm68o"]
+
+[resource]
+script = ExtResource("1_bm68o")
+speed = 375.0
+damage = 1.5
+frequency = 1.0
+lifetime = 7.0
+cooldown = 2.0

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/combat_interface/combat_interface.gd" id="1_28r2y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mq47s"]
-font_size = 30
+font_size = 50
 
 [node name="CombatInterface" type="Control"]
 layout_mode = 3

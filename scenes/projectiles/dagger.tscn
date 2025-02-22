@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/projectiles/dagger.gd" id="2_677yu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_16j1t"]
-size = Vector2(22, 6)
+size = Vector2(45.4987, 45.4987)
 
 [node name="Dagger" type="Sprite2D" groups=["projectile"]]
 texture_filter = 1

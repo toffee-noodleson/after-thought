@@ -36,6 +36,7 @@ version_control/autoload_on_startup=true
 
 projectile=""
 actor=""
+projectile_axe=""
 
 [input]
 

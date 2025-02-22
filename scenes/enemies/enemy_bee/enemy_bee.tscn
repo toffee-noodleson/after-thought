@@ -152,6 +152,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_83e5t"]
 
 [node name="enemy_bee" instance=ExtResource("1_3gu2g")]
+texture_filter = 1
 script = ExtResource("2_dojdh")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
