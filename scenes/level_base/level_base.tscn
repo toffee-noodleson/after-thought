@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://brj8016lr1coa"]
+[gd_scene load_steps=12 format=4 uid="uid://brj8016lr1coa"]
 
 [ext_resource type="Texture2D" uid="uid://b6h7jy8qy1k0s" path="res://assets/Tiles/Tiles-debug.png" id="1_5wlrt"]
 [ext_resource type="PackedScene" uid="uid://cc48v10iwhauf" path="res://scenes/enemies/enemy_bee/enemy_bee.tscn" id="2_nu27a"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://c28t3j4igih0x" path="res://scenes/object_maker/object_maker.tscn" id="6_fmies"]
 [ext_resource type="PackedScene" uid="uid://6v6sjbx5nuoi" path="res://scenes/enemy_spawner/enemy_spawner.tscn" id="7_s4fmd"]
 [ext_resource type="PackedScene" uid="uid://n75pph2u70kg" path="res://scenes/combat_interface/combat_interface.tscn" id="9_jd04k"]
-[ext_resource type="PackedScene" uid="uid://ggt4bbyjh615" path="res://scenes/axe/axe.tscn" id="10_seh13"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xy0g6"]
 texture = ExtResource("1_5wlrt")
@@ -631,6 +630,3 @@ face_right = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CombatInterface" parent="CanvasLayer" instance=ExtResource("9_jd04k")]
-
-[node name="AxeScene" parent="." instance=ExtResource("10_seh13")]
-position = Vector2(493, -261)

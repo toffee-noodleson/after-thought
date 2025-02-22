@@ -13,3 +13,7 @@ func pick_up() -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	SignalManager.on_gem_pickup.emit(_xp)
 	pick_up()
+
+# TODO: activate some sort of animation for lifespan since they shouldn't stay on forever. Or 
+# make themn upgrade to a higher variety if you wait just in time to pick them up, maybe as they flash
+# they can be worth 2 points instead of 1.
