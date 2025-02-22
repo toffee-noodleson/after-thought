@@ -6,6 +6,6 @@
 script = ExtResource("1_sapr4")
 speed = 100.0
 damage = 3.0
-frequency = 1.0
+frequency = 2.0
 lifetime = 3.5
 cooldown = 3.5

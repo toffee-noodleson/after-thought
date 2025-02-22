@@ -21,9 +21,9 @@ func _ready() -> void:
 	
 	if !_face_right:
 		animation_player.play("rotate_2")
-		velocity.x = projectile.speed * -1
+		velocity.x = randf_range(projectile.speed-15, projectile.speed+15) * -1
 	else:
-		velocity.x = projectile.speed
+		velocity.x = randf_range(projectile.speed-15, projectile.speed+15)
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

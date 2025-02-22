@@ -8,12 +8,14 @@ var projectile: ProjectileRes = preload("res://projectile_resource/dagger/dagger
 var _starting_global: Vector2
 var _face_right: bool = true
 var _damage: float
+var _rand_y: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	global_position = _starting_global
 	lifespan_timer.start(projectile.lifetime)
 	_damage = projectile.damage
+	_rand_y = randf_range(-5, 5)
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,7 +27,7 @@ func move(delta: float) -> void:
 		global_position.x += projectile.speed * delta
 	else:
 		global_position.x -= projectile.speed * delta
-	global_position.y = _starting_global.y
+	global_position.y = _starting_global.y + _rand_y
 	
 	
 func reset(pos: Vector2) -> void:

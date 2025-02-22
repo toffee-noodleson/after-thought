@@ -67,7 +67,8 @@ radius = 7.0
 position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_menvo")
 autoplay = "default"
-frame_progress = 0.987113
+frame = 1
+frame_progress = 0.868617
 script = ExtResource("2_nsoxm")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -79,4 +80,9 @@ position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_jdjfo")
 debug_color = Color(0, 0.637396, 0.392619, 0.42)
 
+[node name="RemoveTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="RemoveTimer" to="." method="_on_remove_timer_timeout"]

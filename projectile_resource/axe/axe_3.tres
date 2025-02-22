@@ -6,6 +6,6 @@
 script = ExtResource("1_u11xa")
 speed = 100.0
 damage = 2.5
-frequency = 1.0
+frequency = 2.0
 lifetime = 5.0
-cooldown = 3.0
+cooldown = 3.5

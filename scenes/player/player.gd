@@ -100,11 +100,15 @@ func calculate_state() -> void:
 			sms.set_state(sms.MOVE_STATE.JUMP)
 
 func update_debug_label() -> void:
-	debug_label.text = "state: %s\nhp: %d/%d xp: %d" % [
-		sms.MOVE_STATE.keys()[sms.get_current_state()],
+	debug_label.text = "hp: %d/%d xp: %d" % [
 		StatsDatabase.shared_current_hp, Constants.TOTAL_HP,
 		StatsDatabase.player_xp
 		]
+	#debug_label.text = "state: %s\nhp: %d/%d xp: %d" % [
+		#sms.MOVE_STATE.keys()[sms.get_current_state()],
+		#StatsDatabase.shared_current_hp, Constants.TOTAL_HP,
+		#StatsDatabase.player_xp
+		#]
 
 func flip_h_hitbox(hitbox: Area2D) -> void:
 	if sprite_2d.flip_h:
