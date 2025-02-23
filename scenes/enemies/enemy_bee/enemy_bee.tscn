@@ -153,6 +153,7 @@ animations = [{
 
 [node name="enemy_bee" instance=ExtResource("1_3gu2g")]
 texture_filter = 1
+collision_mask = 132
 script = ExtResource("2_dojdh")
 _hit_points = 2.0
 _move_speed = 5.0
@@ -163,12 +164,33 @@ animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" parent="." index="1"]
-visible = false
 shape = SubResource("CapsuleShape2D_k1hps")
+
+[node name="Hurtbox" parent="." index="2"]
+collision_layer = 8
+collision_mask = 132
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CapsuleShape2D_83e5t")
 
 [node name="DebugLabel" type="Label" parent="." index="6"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -3.0
+offset_top = -32.0
+offset_right = 37.0
+offset_bottom = -9.0
+scale = Vector2(0.294863, 0.314067)
+text = "sdf"
+
+[node name="HitBox" type="Area2D" parent="." index="7"]
+collision_layer = 16
+collision_mask = 256
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CapsuleShape2D_83e5t")
+
+[node name="MoveTimer" type="Timer" parent="." index="8"]
+wait_time = 7.0
+autostart = true
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

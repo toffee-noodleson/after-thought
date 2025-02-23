@@ -19,7 +19,7 @@ const GRAVITY: float = 0
 const JUMP_VELOCITY: float = -400.0
 const MAX_FALL_SPEED: float = 500.0
 const DASH_TIME: float = 1.0
-const DASH_POWER: float = 800.0
+const DASH_POWER: float = 500.0
 
 var _can_jump: bool = true
 var _can_dash: bool = true
@@ -138,7 +138,7 @@ func check_death() -> void:
 		get_tree().paused = true
 
 func take_damage() -> void:
-	#check_death()
+	check_death()
 	
 	if _invincible:
 		return
@@ -159,6 +159,7 @@ func actor_reset() -> void:
 
 func on_core_hit() -> void:
 	SoundManager.play_clip(audio_stream_player_2d, "core_damage")
+	check_death()
 
 func _on_dash_timer_timeout() -> void:
 	sms.set_state(sms.MOVE_STATE.IDLE)

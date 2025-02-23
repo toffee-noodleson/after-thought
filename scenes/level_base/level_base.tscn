@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://brj8016lr1coa"]
+[gd_scene load_steps=18 format=4 uid="uid://brj8016lr1coa"]
 
 [ext_resource type="Texture2D" uid="uid://b6h7jy8qy1k0s" path="res://assets/Tiles/Tiles-debug.png" id="1_5wlrt"]
 [ext_resource type="Texture2D" uid="uid://cpehdmjdnl0q2" path="res://assets/Background/Background.png" id="1_c2jgi"]
@@ -8,9 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://cs70nlxcard8h" path="res://scenes/enemies/enemy_boar/enemy_boar.tscn" id="4_7filj"]
 [ext_resource type="PackedScene" uid="uid://cqt67sw82ydsk" path="res://scenes/core/core.tscn" id="5_hweha"]
 [ext_resource type="PackedScene" uid="uid://c28t3j4igih0x" path="res://scenes/object_maker/object_maker.tscn" id="6_fmies"]
+[ext_resource type="PackedScene" uid="uid://cc48v10iwhauf" path="res://scenes/enemies/enemy_bee/enemy_bee.tscn" id="6_iwjwf"]
 [ext_resource type="PackedScene" uid="uid://6v6sjbx5nuoi" path="res://scenes/enemy_spawner/enemy_spawner.tscn" id="7_s4fmd"]
 [ext_resource type="PackedScene" uid="uid://n75pph2u70kg" path="res://scenes/combat_interface/combat_interface.tscn" id="9_jd04k"]
 [ext_resource type="PackedScene" uid="uid://bjwp4lefkjdar" path="res://scenes/level_up_choice/level_up_choice.tscn" id="11_2ysbb"]
+[ext_resource type="PackedScene" uid="uid://33t2m5jx20ol" path="res://scenes/game_over/game_over.tscn" id="12_pkn1n"]
+[ext_resource type="AudioStream" uid="uid://dvls0y5bcn1e" path="res://assets/Audio/freaky-trap-224662.mp3" id="14_3mkey"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ydkb2"]
 texture = ExtResource("3_p08wc")
@@ -1271,6 +1274,11 @@ position = Vector2(115, -251)
 enemy_type = ExtResource("4_7filj")
 face_right = true
 
+[node name="EnemySpawner6" parent="Enemies" instance=ExtResource("7_s4fmd")]
+position = Vector2(654, -475)
+enemy_type = ExtResource("6_iwjwf")
+face_right = true
+
 [node name="ProjectileManager" parent="." instance=ExtResource("3_5cpge")]
 
 [node name="Core" parent="." instance=ExtResource("5_hweha")]
@@ -1286,3 +1294,10 @@ position = Vector2(521, -159)
 [node name="CombatInterface" parent="CanvasLayer" instance=ExtResource("9_jd04k")]
 
 [node name="LevelUpChoice" parent="CanvasLayer" instance=ExtResource("11_2ysbb")]
+
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource("12_pkn1n")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_3mkey")
+volume_db = -5.0
+autoplay = true

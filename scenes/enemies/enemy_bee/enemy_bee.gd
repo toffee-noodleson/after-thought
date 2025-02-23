@@ -1,13 +1,15 @@
 extends EnemyBase
 
 @onready var debug_label: Label = $DebugLabel
+@onready var hit_box: Area2D = $HitBox
+@onready var enemy_bee: CharacterBody2D = $"."
 
 enum ENEMY_STATE {IDLE, WALK, ATTACK, HURT}
 
 var _current_state: ENEMY_STATE
 var _player_detected: bool = false
 var _attack_speed: float = -50
-
+var tween: Tween
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -22,7 +24,6 @@ func flip_actor() -> void:
 func move() -> void:
 	
 	if _hit_stun:
-		velocity.x = 0
 		return
 	
 	velocity.x = _move_speed
@@ -58,10 +59,16 @@ func set_state(state: ENEMY_STATE) -> void:
 			animated_sprite_2d.play("hit")
 			hit_stun_timer.start()
 
+func create_move_tween() -> void:
+	tween = enemy_bee.create_tween()
+	tween.tween_property(enemy_bee, "global_position", get_core_pos(), 10)
+	#tween.tween_callback($Sprite.queue_free)
 
 func update_label() -> void:
 	debug_label.text = "hp: %d" % _current_hp
 
+func get_core_pos() -> Vector2:
+	return get_tree().get_nodes_in_group("core")[0].global_position
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.get_parent().name == "Core":
@@ -69,3 +76,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		StatsDatabase.shared_current_hp -= 1
 		SignalManager.on_core_hit.emit()
 		queue_free()
+
+
+func _on_move_timer_timeout() -> void:
+	create_move_tween()

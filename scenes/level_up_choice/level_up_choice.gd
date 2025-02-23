@@ -21,6 +21,7 @@ func _on_dagger_button_pressed() -> void:
 	if StatsDatabase.player_dagger_level < 5:
 		StatsDatabase.player_dagger_level += 1
 	else:
+		dagger_button.hide()
 		dagger_button.disabled = true
 	hide()
 	get_tree().paused = false
@@ -30,6 +31,7 @@ func _on_axe_button_pressed() -> void:
 	if StatsDatabase.player_axe_level < 5:
 		StatsDatabase.player_axe_level += 1
 	else:
+		axe_button.hide()
 		axe_button.disabled = true
 	hide()
 	get_tree().paused = false
