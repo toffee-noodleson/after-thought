@@ -94,5 +94,7 @@ autoplay = "rotate"
 shape = SubResource("CircleShape2D_q07p4")
 debug_color = Color(0.853822, 0.225706, 0.725812, 0.42)
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="area_entered" from="Sprite2D/Area2D2" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="LifespanTimer" to="." method="_on_lifespan_timer_timeout"]

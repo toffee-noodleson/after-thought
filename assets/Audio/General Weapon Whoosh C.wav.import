@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dsu4ktvdb8lpp"
+path="res://.godot/imported/General Weapon Whoosh C.wav-cb9c91aa61f7938eae87676fa7fdc9f8.sample"
+
+[deps]
+
+source_file="res://assets/Audio/General Weapon Whoosh C.wav"
+dest_files=["res://.godot/imported/General Weapon Whoosh C.wav-cb9c91aa61f7938eae87676fa7fdc9f8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -9,6 +9,7 @@
 script = ExtResource("1_32e7p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_g3bth")
 region_enabled = true
 region_rect = Rect2(0.212074, 256.496, 31.2258, 31.2258)
@@ -17,6 +18,7 @@ region_rect = Rect2(0.212074, 256.496, 31.2258, 31.2258)
 wait_time = 7.0
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -7.0
 offset_top = -25.0
 offset_right = 33.0

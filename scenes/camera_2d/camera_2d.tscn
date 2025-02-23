@@ -4,6 +4,7 @@
 
 [node name="Camera2D" type="Camera2D"]
 zoom = Vector2(2, 2)
+limit_bottom = 0
 limit_smoothed = true
 script = ExtResource("1_xmees")
 

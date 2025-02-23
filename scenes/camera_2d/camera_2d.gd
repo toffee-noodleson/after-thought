@@ -3,8 +3,8 @@ extends Camera2D
 @onready var shake_timer: Timer = $ShakeTimer
 
 var _shake: bool = false
-var _shake_min: float = -2
-var _shake_max: float = 2
+var _shake_min: float = -3
+var _shake_max: float = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -1,5 +1,8 @@
 extends Node2D
 
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+
 var enemy_death_scene: PackedScene = preload("res://scenes/enemies/enemy_death.tscn")
 var gem_scene: PackedScene = preload("res://scenes/gem/gem.tscn")
 
@@ -11,6 +14,7 @@ func _ready() -> void:
 	SignalManager.on_projectile_enemy_hit.connect(on_enemy_hit)
 
 func on_enemy_death(global_pos: Vector2) -> void:
+	SoundManager.play_clip(audio_stream_player_2d, "kill")
 	spawn_object(enemy_death_scene, global_pos)
 	
 	spawn_object(gem_scene, global_pos)

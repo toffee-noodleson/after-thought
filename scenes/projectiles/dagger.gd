@@ -3,6 +3,7 @@ class_name ProjectileDagger
 extends Sprite2D
 
 @onready var lifespan_timer: Timer = $LifespanTimer
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var projectile: ProjectileRes = preload("res://projectile_resource/dagger/dagger_1.tres")
 var _starting_global: Vector2
@@ -16,6 +17,8 @@ func _ready() -> void:
 	lifespan_timer.start(projectile.lifetime)
 	_damage = projectile.damage
 	_rand_y = randf_range(-5, 5)
+	
+	SoundManager.play_clip(audio_stream_player_2d, "knife")
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

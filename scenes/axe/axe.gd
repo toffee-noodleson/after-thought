@@ -4,6 +4,7 @@ class_name ProjectileAxe
 @onready var lifespan_timer: Timer = $LifespanTimer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 var projectile: ProjectileRes = preload("res://projectile_resource/axe/axe_1.tres")
@@ -25,6 +26,7 @@ func _ready() -> void:
 	else:
 		velocity.x = randf_range(projectile.speed-15, projectile.speed+15)
 	
+	SoundManager.play_clip(audio_stream_player_2d, "axe")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:

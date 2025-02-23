@@ -4,6 +4,7 @@ class_name EnemyBase
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_stun_timer: Timer = $HitStunTimer
 @onready var sword_invincible_timer: Timer = $SwordInvincibleTimer
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var _hit_points: float
 @export var _damage: float
@@ -66,6 +67,7 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 			take_damage(area.get_parent().get_parent()._damage)
 			_sword_invincibile = true
 			sword_invincible_timer.start()
+	
 
 func _on_sword_invincible_timer_timeout() -> void:
 	_sword_invincibile = false
